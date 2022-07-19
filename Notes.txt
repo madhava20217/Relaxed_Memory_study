@@ -1,0 +1,6 @@
+1) KLSM - K Priority Queue: Only benchmarks throughput. There is an R Script to plot thruoghput vs threads, but that is it.
+Will need to modify the library to write more data to the results.csv file. 
+
+-- Can only get throughput for a certain number of threads.
+
+2) 
