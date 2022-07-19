@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/ml/Desktop/Energy Efficiency'
+make: Leaving directory '/home/ml/Desktop/Energy Efficiency'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
