@@ -2,5 +2,11 @@
 Will need to modify the library to write more data to the results.csv file. 
 
 -- Can only get throughput for a certain number of threads.
+-- Results are stored in a csv file containing the benchmark name, number of threads and the throughput.
+-- No parameters can be set except number of threads. Will need to look deeper into the script files for determining what to tweak.
 
-2) 
+2) SprayList: very similar to synchrobench (same flags, arguments, help menu).
+
+Metrics: size, duration, (seed value), added, removed, cleaned, collisions, found, aborts, retries, read transactions, update transactions, , removed , added, locks aborts...
+
+Thing to note: default implementation uses Fraser's Skip-List, but can set a flag to use spraylist. However, it gives a segfault on my machine (need to examine in more detail).
