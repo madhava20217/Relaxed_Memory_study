@@ -1,4 +1,4 @@
-/**
+/open**
  * the RAPL power unit that allows portability across architecture for power/energy calculation
  * * This implementation can also detect the topology of a node as block or cyclic, and automatically update the corresponding counter values to the correct socket 
  * Commented counters if any are not used in the current implementation
