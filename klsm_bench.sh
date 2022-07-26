@@ -8,7 +8,7 @@ sudo modprobe cpufreq_userspace
 
 ITERS=10
 
-FREQS=(1200 1500 2000 2500 2800 )  		#List of frequencies to run the test at
+FREQS=( 1200 1500 2000 2500 2800 )  		#List of frequencies to run the test at
 
 cd klsm
 
