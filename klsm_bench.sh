@@ -12,7 +12,7 @@ FREQS=( 1200 1500 2000 2500 2800 )  		#List of frequencies to run the test at
 cd klsm
 
 for freq in "${FREQS[@]}"; do
-
+    sudo cpupower frequency-set --governor userspace
     sudo cpupower frequency-set --freq "$freq"
 
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv
