@@ -1,6 +1,23 @@
 #!/bin/bash
 
-cd ./klsm
-make clean && make
-taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1,8,16,24,32 -r 5 -o results.csv
-Rscript misc/plot_throughput.R results.csv
+
+#cd ./klsm
+#make clean && make
+
+ITERS=10
+
+FREQS=( 1000 1500 2000 2500 2800 )
+
+cd klsm
+
+for freq in "${FREQS[@]}"; do
+
+    sudo cpupower frequency-set --freq "$freq"
+
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 8 -r $ITERS -o ./results/${freq}/results_8.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 16 -r $ITERS -o ./results/${freq}/results_16.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 24 -r $ITERS -o ./results/${freq}/results_24.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o ./results/${freq}/results_32.csv
+
+done
