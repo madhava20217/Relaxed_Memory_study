@@ -296,34 +296,38 @@ int main(){
     perfcounters_init(); // call once
     perfcounters_start();
 
+    while(1){                                             //MODIFIED BY MADHAVA 
     sleep(2);
     perfcounters_read();
 
-    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	printf("inst %ld \n", LAST_INST_RETIRED[0]);
+    printf("%f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);   // PRINTS POWER, MODIFIED BY MADHAVA
+    }                                                     //MODIFIED BY MADHAVA 
 
-    sleep(2);
-    perfcounters_read();
-    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	printf("inst %ld \n", LAST_INST_RETIRED[0]);
+                                                          //MODIFIED BY MADHAVA 
+	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-    sleep(2);
-    perfcounters_read();
-    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	printf("inst %ld \n", LAST_INST_RETIRED[0]);
+  //   sleep(2);
+  //   perfcounters_read();
+  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+
+  //   sleep(2);
+  //   perfcounters_read();
+  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
     
-	sleep(2);
-    perfcounters_read();
-    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	printf("inst %ld \n", LAST_INST_RETIRED[0]);
+	// sleep(2);
+  //   perfcounters_read();
+  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-    sleep(2);
-    perfcounters_read();
-    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	printf("inst %ld \n", LAST_INST_RETIRED[0]);
+  //   sleep(2);
+  //   perfcounters_read();
+  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-    perfcounters_stop(); 
-    perfcounters_finalize(); // call once
+  //   perfcounters_stop(); 
+  //   perfcounters_finalize(); // call once
 
     return 0;
 }
