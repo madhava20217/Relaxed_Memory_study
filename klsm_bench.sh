@@ -27,16 +27,48 @@ for freq in "${FREQS[@]}"; do
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 16 -r $ITERS -o ./results/${freq}/results_16.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_16.csv) | parallel
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 24 -r $ITERS -o ./results/${freq}/results_24.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_24.csv) | parallel
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o ./results/${freq}/results_32.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_32.csv) | parallel
+    pids = ""
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv & 
+        pids="$pids $!" & 
+    sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_1.csv 7 & 
+        pids="$pids $!";
+        
+    wait $pids;
+    pids = ""
 
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv & pid="$!" & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_1.csv 7
-    wait $pid
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_8.csv & pid="$!" & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_8.csv 7
-    wait $pid
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_16.csv & pid="$!" & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_16.csv 7
-    wait $pid
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_24.csv & pid="$!" & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_24.csv 7
-    wait $pid
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_32.csv & pid="$!" & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_32.csv 7
-    wait $pid
 
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_8.csv & 
+        pids="$pids $!" & 
+    sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_8.csv 7
+        pids="$pids $!";
+
+    wait $pids;
+    pids = ""
+
+
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_16.csv & 
+        pids="$pids $!" & 
+    sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_16.csv 7
+        pids="$pids $!";
+
+    wait $pids;
+    pids = ""
+
+
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_24.csv & 
+        pids="$pids $!" & 
+    sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_24.csv 7
+        pids="$pids $!";
+
+    wait $pids;
+    pids = ""
+
+
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_32.csv & 
+        pids="$pids $!" & 
+    sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_32.csv 7
+        pids="$pids $!";
+
+    wait $pids;
+    pids = ""
 done
