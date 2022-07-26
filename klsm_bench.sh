@@ -1,9 +1,10 @@
-
 #!/bin/bash
 
 
 #cd ./klsm
 #make clean && make
+
+sudo modprobe cpufreq_userspace
 
 ITERS=10
 
