@@ -14,6 +14,8 @@ FREQS=( 1200000 1500000 2000000 2500000 2800000 )  		#List of frequencies to run
 
 cd klsm
 
+pid=-1
+
 for freq in "${FREQS[@]}"; do
     echo "TESTING FREQUENCY $freq"   c
  
@@ -29,14 +31,14 @@ for freq in "${FREQS[@]}"; do
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o ./results/${freq}/results_32.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_32.csv) | parallel
 
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv & pid=$! & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_1.csv 7
-    wait(pid)
+    wait $pid
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_8.csv & pid=$! & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_8.csv 7
-    wait(pid)
+    wait $pid
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_16.csv & pid=$! & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_16.csv 7
-    wait(pid)
+    wait $pid
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_24.csv & pid=$! & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_24.csv 7
-    wait(pid)
+    wait $pid
     taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_32.csv & pid=$! & sudo taskset -c 32 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_32.csv 7
-    wait(pid)
+    wait $pid
 
 done
