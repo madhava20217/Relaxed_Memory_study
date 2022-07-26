@@ -14,7 +14,6 @@
   Takes three arguments: 
     1) output file name
     2) number of iterations to sample for
-    3) time interval between sampling (in seconds).
  **/
 
 
@@ -301,17 +300,12 @@ void perfcounters_dump(){
 
 
 int main(int argc, char* argv[]){                                        //MODIFIED BY MADHAVA
-    sleep(1);
+    sleep(4);
 
     int iterations = 10;
-    int time_interval = 1;
+    int time_interval = 2;
     FILE* OUTPUT = stdout;
-    if(argc == 4){
-      iterations = atoi(argv[2]);
-      time_interval = atoi(argv[3]);
-      OUTPUT = fopen(argv[1], "w+");
-    }
-    else if(argc == 3){
+    if(argc == 3){
       iterations = atoi(argv[2]);
       OUTPUT = fopen(argv[1], "w+");
     }
