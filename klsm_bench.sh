@@ -4,18 +4,20 @@
 #cd ./klsm
 #make clean && make
 
-ITERS = 10
+ITERS=10
 
-freqs = {1000 1500 2000 2500 2800}
+FREQS=( 1000 1500 2000 2500 2800 )
 
-for freq in "${freqs[@]}"; do
+cd klsm
 
-    cpupower -c all -f "$freq"
+for freq in "${FREQS[@]}"; do
 
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o results/${freq}/results_1.csv
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 8 -r $ITERS -o results/${freq}results_8.csv
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 16 -r $ITERS -o results/${freq}results_16.csv
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 24 -r $ITERS -o results/${freq}results_24.csv
-    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o results/${freq}results_32.csv
+    sudo cpupower frequency-set --freq "$freq"
+
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 8 -r $ITERS -o ./results/${freq}/results_8.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 16 -r $ITERS -o ./results/${freq}/results_16.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 24 -r $ITERS -o ./results/${freq}/results_24.csv
+    taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o ./results/${freq}/results_32.csv
 
 done
