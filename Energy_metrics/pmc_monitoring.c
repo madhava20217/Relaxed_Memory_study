@@ -306,12 +306,12 @@ int main(int argc, char* argv[]){                                        //MODIF
     perfcounters_init(); // call once
     perfcounters_start();
 
-    freopen(argv[1], "w+", STDOUT_FILENO);
+    FILE* OUTPUT = fopen(argv[1], "w+");
 
     while(1){                                                           //MODIFIED BY MADHAVA 
     sleep(5);
     perfcounters_read();
-    fprintf(STDOUT_FILENO, "%f,\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT); // PRINTS POWER, MODIFIED BY MADHAVA
+    fprintf(OUTPUT, "%f,\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT); // PRINTS POWER, MODIFIED BY MADHAVA
     }                                                                   //MODIFIED BY MADHAVA 
 
                                                                         //MODIFIED BY MADHAVA 
