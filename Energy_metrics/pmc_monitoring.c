@@ -291,21 +291,17 @@ void perfcounters_dump(){
 
 
 
-int main(int argc, char* argv[]){
-
-    FILE* OUTPUT_FILE = STDOUT_FILENO;                                  //MODIFIED BY MADHAVA
-    if(argc != 1){                                                      //MODIFIED BY MADHAVA
-      OUTPUT_FILE = fopen(argv[1], "w+");                               //MODIFIED BY MADHAVA
-    }                                                                   //MODIFIED BY MADHAVA
+int main(int argc, char* argv[]){                                                          //MODIFIED BY MADHAVA
 
     perfcounters_init(); // call once
     perfcounters_start();
 
-    while(1){                                                           //MODIFIED BY MADHAVA 
-    sleep(2);
-    perfcounters_read();
+    freopen(argv[1], "w", stdout);
 
-    fprintf(OUTPUT_FILE, "%f\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);    // PRINTS POWER, MODIFIED BY MADHAVA
+    while(1){                                                           //MODIFIED BY MADHAVA 
+    sleep(5);
+    perfcounters_read();
+    printf("%f\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);                  // PRINTS POWER, MODIFIED BY MADHAVA
     }                                                                   //MODIFIED BY MADHAVA 
 
                                                                         //MODIFIED BY MADHAVA 
