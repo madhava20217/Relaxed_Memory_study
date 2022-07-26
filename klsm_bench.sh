@@ -24,10 +24,10 @@ for freq in "${FREQS[@]}"; do
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 24 -r $ITERS -o ./results/${freq}/results_24.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_24.csv) | parallel
     # (echo taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 32 -r $ITERS -o ./results/${freq}/results_32.csv; echo taskset -c 32 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_32.csv) | parallel
 
-    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_1.csv)
-    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_8.csv & sudo -c 63 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_8.c)
-    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_16.csv & sudo -c 63 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_16.csv)
-    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_24.csv & sudo -c 63 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_24.csv)
-    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_32.csv & sudo -c 63 ../Energy_metrics/cpu_monitoring > ./results/${freq}/power_32.csv)
+    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_1.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_1.csv)
+    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_8.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_8.c)
+    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_16.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_16.csv)
+    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_24.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_24.csv)
+    (trap 'kill 0' SIGINT; taskset -c 0-31 ./bench.py -a klsm128,klsm256 -p 1 -r $ITERS -o ./results/${freq}/results_32.csv & sudo taskset -c 63 ../Energy_metrics/cpu_monitoring ./results/${freq}/power_32.csv)
 
 done
