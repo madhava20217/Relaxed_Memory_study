@@ -300,7 +300,7 @@ void perfcounters_dump(){
 
 
 int main(int argc, char* argv[]){                                        //MODIFIED BY MADHAVA
-    sleep(4);
+    sleep(2);
 
     int iterations = 10;
     int time_interval = 2;
