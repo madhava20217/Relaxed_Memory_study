@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 26 07:28:28 2022
+# Make data base, printed on Tue Jul 26 18:14:10 2022
 
 # Variables
 
@@ -71,7 +71,7 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /home/ml/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/rocm/bin:/opt/rocm/rocprofiler/bin:/opt/rocm/opencl/bin:/opt/rocm/bin:/opt/rocm/rocprofiler/bin:/opt/rocm/opencl/bin
 # environment
-SESSION_MANAGER = local/ml-unify:@/tmp/.ICE-unix/1490,unix/ml-unify:/tmp/.ICE-unix/1490
+SESSION_MANAGER = local/ml-unify:@/tmp/.ICE-unix/1535,unix/ml-unify:/tmp/.ICE-unix/1535
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -87,7 +87,7 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = xfce
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-cNpShfhdlHbV/agent.1490
+SSH_AUTH_SOCK = /tmp/ssh-oXDbGtTFqnoB/agent.1535
 # automatic
 %F = $(notdir $%)
 # environment
@@ -103,7 +103,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1569
+SSH_AGENT_PID = 1615
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = XFCE
 # environment
@@ -177,8 +177,6 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-NO_AT_BRIDGE = 1
-# environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/xfce.default.path
@@ -205,11 +203,11 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 10894
+VSCODE_PID = 5229
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
-# Load=98/1024=10%, Rehash=0, Collisions=6/120=5%
+# Load=97/1024=9%, Rehash=0, Collisions=6/119=5%
 
 # Pattern-specific Variable Values
 
@@ -217,9 +215,9 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 54, inode 1053273): 13 files, no impossibilities.
+# . (device 54, inode 1053273): 15 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -269,12 +267,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 199 B / avg = 9 B
-# current buf: size = 8162 B / used = 199 B / count = 21 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 215 B / avg = 9 B
+# current buf: size = 8162 B / used = 215 B / count = 23 / avg = 9 B
 
-# strcache performance: lookups = 24 / hit rate = 12%
+# strcache performance: lookups = 26 / hit rate = 11%
 # hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Tue Jul 26 07:28:28 2022
+# Load=23/8192=0%, Rehash=0, Collisions=1/26=4%
+# Finished Make data base on Tue Jul 26 18:14:10 2022
 
  
