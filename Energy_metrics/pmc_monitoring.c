@@ -19,6 +19,7 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <signal.h> //for handling SIGINT signal
 
 /* Intel Xeon Power MSR register addresses  (change according to your machine) */
 // register value for different scope
@@ -289,19 +290,28 @@ void perfcounters_dump(){
 
 }
 
+void SIGINT_handler(int signal){
+  perfcounters_stop(); 
+  perfcounters_finalize(); // call once
+
+  exit(EXIT_SUCCESS);
+}
 
 
-int main(int argc, char* argv[]){                                                          //MODIFIED BY MADHAVA
+int main(int argc, char* argv[]){                                        //MODIFIED BY MADHAVA
+
+  //register SIGINT handler
+  signal(SIGINT, SIGINT_handler);
 
     perfcounters_init(); // call once
     perfcounters_start();
 
-    freopen(argv[1], "w", stdout);
+    freopen(argv[1], "w+", STDOUT_FILENO);
 
     while(1){                                                           //MODIFIED BY MADHAVA 
     sleep(5);
     perfcounters_read();
-    printf("%f\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);                  // PRINTS POWER, MODIFIED BY MADHAVA
+    fprintf(STDOUT_FILENO, "%f,\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT); // PRINTS POWER, MODIFIED BY MADHAVA
     }                                                                   //MODIFIED BY MADHAVA 
 
                                                                         //MODIFIED BY MADHAVA 
@@ -327,8 +337,8 @@ int main(int argc, char* argv[]){                                               
   //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
 	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-  //   perfcounters_stop(); 
-  //   perfcounters_finalize(); // call once
+  //  perfcounters_stop(); 
+  //  perfcounters_finalize(); // call once
 
     return 0;
 }
