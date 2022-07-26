@@ -6,14 +6,15 @@
 
 sudo modprobe cpufreq_userspace
 
-ITERS=10
+ITERS=5
 
 FREQS=( 1200000 1500000 2000000 2500000 2800000 )  		#List of frequencies to run the test at
 
 cd klsm
 
 for freq in "${FREQS[@]}"; do
-    
+    echo "TESTING FREQUENCY $freq"   
+ 
     sudo cpupower frequency-set --governor userspace
     sudo cpupower frequency-set --freq "$freq"
 
