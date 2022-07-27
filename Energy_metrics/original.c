@@ -7,14 +7,8 @@
  * Written in HiPeC Lab by  
 		Sunil Kumar, sunilk@iiitd.ac.in
 		Akshat Gupta, akshat17014@iiitd.ac.in
-
-
-  Modified by Madhava for summer internship, 2022 at IIIT Delhi under Prof Vivek Kumar, supervised by Sunil Kumar
-
-  Takes three arguments: 
-    1) output file name
-    2) number of iterations to sample for
  **/
+
 
 
 #define _XOPEN_SOURCE 500
@@ -25,8 +19,6 @@
 #include <assert.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <signal.h> //for handling SIGINT signal
-#include <string.h> //for parsing argument 2, number of samples and time span for sleep
 
 /* Intel Xeon Power MSR register addresses  (change according to your machine) */
 // register value for different scope
@@ -299,56 +291,39 @@ void perfcounters_dump(){
 
 
 
-int main(int argc, char* argv[]){                                        //MODIFIED BY MADHAVA
-    sleep(2);
-
-    int iterations = 10;
-    int time_interval = 2;
-    FILE* OUTPUT = stdout;
-    if(argc == 3){
-      iterations = atoi(argv[2]);
-      OUTPUT = fopen(argv[1], "w+");
-    }
-    else if(argc == 2){
-      OUTPUT = fopen(argv[1], "w+");
-    }
+int main(){
 
     perfcounters_init(); // call once
     perfcounters_start();
 
-    
-
-    while(iterations--){                                                           //MODIFIED BY MADHAVA 
-    sleep(time_interval);
+    sleep(2);
     perfcounters_read();
-    fprintf(OUTPUT, "%f,\n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT); // PRINTS POWER, MODIFIED BY MADHAVA
-    }                                                                   //MODIFIED BY MADHAVA 
 
-                                                                        //MODIFIED BY MADHAVA 
-	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-  //   sleep(2);
-  //   perfcounters_read();
-  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+    sleep(2);
+    perfcounters_read();
+    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-  //   sleep(2);
-  //   perfcounters_read();
-  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+    sleep(2);
+    perfcounters_read();
+    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	printf("inst %ld \n", LAST_INST_RETIRED[0]);
     
-	// sleep(2);
-  //   perfcounters_read();
-  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+	sleep(2);
+    perfcounters_read();
+    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-  //   sleep(2);
-  //   perfcounters_read();
-  //   printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
-	// printf("inst %ld \n", LAST_INST_RETIRED[0]);
+    sleep(2);
+    perfcounters_read();
+    printf("power %f \n", LAST_PWR_PKG_ENERGY[0]*JOULE_UNIT);
+	printf("inst %ld \n", LAST_INST_RETIRED[0]);
 
-  //  perfcounters_stop(); 
-  //  perfcounters_finalize(); // call once
+    perfcounters_stop(); 
+    perfcounters_finalize(); // call once
 
     return 0;
 }
