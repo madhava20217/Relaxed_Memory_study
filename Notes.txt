@@ -15,3 +15,7 @@ Thing to note: default implementation uses Fraser's Skip-List, but can set a fla
 Commands for CPU registers:
 1) sudo modprobe msr
 2) sudo chmod +rw /dev/cpu/*/msr
+
+
+
+Have two sets of benchmarks now: one with alternating cores (0 2 4 ... 62), and another with contiguous cores (0 1 2 ... 31).
