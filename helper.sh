@@ -21,7 +21,8 @@ truncate -s 0 ./results/${FREQ}/results_${MONITOR_CORE}.csv
 
 #setting frequency and changing governor
 sudo cpupower frequency-set --governor userspace
-sudo cpupower frequency-set --freq "$FREQ"
+sudo cpupower frequency-set --freq 1200000                          #throttle everything else
+sudo cpupower -c 0-$((2*$CORE)):2 frequency-set --freq "$FREQ"      #set speed to just the required cores
 
 
 taskset -c 0-$((2*$CORE)):2 ./bench.py -a klsm128,klsm256 -p $MONITOR_CORE -r ${ITER} -o ./results/${FREQ}/results_${MONITOR_CORE}.csv & sudo taskset -c ${MONITOR_CORE} ../Energy_metrics/cpu_monitoring ./results/${FREQ}/power_${MONITOR_CORE}.csv ${SAMPLES}
