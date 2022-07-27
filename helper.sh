@@ -9,7 +9,7 @@
 FREQ=$1                             #testing_frequency
 ITER=$2                             #iterations to run the test for
 CORE=$3                             #total number of cores
-MONITOR_CORE=1                 #core to monitor power at
+MONITOR_CORE=$CORE                  #core to monitor power at
 SAMPLES=$4
 CORE=$(($CORE-1))
 
@@ -24,7 +24,7 @@ sudo cpupower frequency-set --governor userspace
 sudo cpupower frequency-set --freq "$FREQ"
 
 
-taskset -c 0-$((2*$CORE)):2 ./bench.py -a klsm128,klsm256 -p ${MONITOR_CORE} -r ${ITER} -o ./results/${FREQ}/results_${MONITOR_CORE}.csv & sudo taskset -c ${MONITOR_CORE} ../Energy_metrics/cpu_monitoring ./results/${FREQ}/power_${MONITOR_CORE}.csv ${SAMPLES}
+taskset -c 0-$((2*$CORE)):2 ./bench.py -a klsm128,klsm256 -p $MONITOR_CORE -r ${ITER} -o ./results/${FREQ}/results_${MONITOR_CORE}.csv & sudo taskset -c ${MONITOR_CORE} ../Energy_metrics/cpu_monitoring ./results/${FREQ}/power_${MONITOR_CORE}.csv ${SAMPLES}
 
 
 wait
