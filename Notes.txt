@@ -15,3 +15,6 @@ Thing to note: default implementation uses Fraser's Skip-List, but can set a fla
 Commands for CPU registers:
 1) sudo modprobe msr
 2) sudo chmod +rw /dev/cpu/*/msr
+
+
+For getting info for the scripts, can run likwid-topology.
