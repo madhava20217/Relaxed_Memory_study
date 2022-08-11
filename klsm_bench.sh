@@ -10,7 +10,7 @@ sudo chmod +rw /dev/cpu/*/msr
 
 ITERS=5
 
-FREQS=( 1200000 1500000 2000000 2500000 2800000 )  	#List of frequencies to run the test at
+FREQS=( 1200000 1500000 1800000 2100000 2300000 )  	#List of frequencies to run the test at
 
 cd klsm
 
