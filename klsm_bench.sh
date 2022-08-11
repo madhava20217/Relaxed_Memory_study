@@ -24,5 +24,4 @@ for freq in "${FREQS[@]}"; do
     ../helper.sh $freq $ITERS 8 20
     ../helper.sh $freq $ITERS 16 20
     ../helper.sh $freq $ITERS 24 20
-    ../helper.sh $freq $ITERS 32 20
 done

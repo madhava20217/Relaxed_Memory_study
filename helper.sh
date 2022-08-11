@@ -24,7 +24,7 @@ sudo cpupower frequency-set --governor userspace
 sudo cpupower frequency-set --freq "$FREQ"
 
 #executing task, setting seed as 1520043 (after -k argument)
-taskset -c 0-${CORE} ./bench.py -a klsm16 -p ${MONITOR_CORE} -r ${ITER} -o ./results/${FREQ}/results_${MONITOR_CORE}.csv & sudo taskset -c ${MONITOR_CORE} ../Energy_metrics/cpu_monitoring ./results/${FREQ}/power_${MONITOR_CORE}.csv ${SAMPLES}
+taskset -c 0-${CORE} ./bench.py -a spray -p ${MONITOR_CORE} -r ${ITER} -o ./results/${FREQ}/results_${MONITOR_CORE}.csv & sudo taskset -c ${MONITOR_CORE} ../Energy_metrics/cpu_monitoring ./results/${FREQ}/power_${MONITOR_CORE}.csv ${SAMPLES}
 
 
 wait
