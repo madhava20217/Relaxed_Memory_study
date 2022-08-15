@@ -41,7 +41,7 @@
 #define MSR_PKG_ENERGY_STATUS           0x611
 /************************************************************************/
 // Machine configuration  (change according to your machine)
-#define CORESperSOCKET 16
+#define CORESperSOCKET 12
 #define SOCKETSperNODE 1
 #define NNODES 2
 /************************************************************************/
